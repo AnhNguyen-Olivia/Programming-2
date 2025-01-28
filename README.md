@@ -2,8 +2,6 @@
 
 A repository to practice and enhance C++ programming skills.
 
----
-
 ## Table of Contents
 
 1. [Introduction](#introduction)  
@@ -18,13 +16,9 @@ A repository to practice and enhance C++ programming skills.
 10. [Next Steps](#next-steps)  
 11. [License](#license)  
 
----
-
 ## Introduction
 
 This repository contains a series of lessons designed to improve your understanding and proficiency in C++ programming. Each lesson builds on the previous one, introducing new concepts and techniques in a structured and hands-on manner.
-
----
 
 ## Progress Overview
 
@@ -35,8 +29,6 @@ This repository contains a series of lessons designed to improve your understand
 | Lesson 3: Data Protection (Functions & Arrays) | 0%                   |
 
 _Last updated: 28/01/2025_
-
----
 
 ## Getting Started
 
@@ -52,8 +44,6 @@ Navigate to the repository directory:
 cd Programming-2
 ```
 
----
-
 ## Prerequisites
 
 Before starting, ensure you have the following:
@@ -61,16 +51,12 @@ Before starting, ensure you have the following:
 - A C++ compiler installed (e.g., GCC, Clang, or Visual Studio).
 - Git installed to clone this repository.
 
----
-
 ## Tools and Technologies
 
 This repository uses the following tools and technologies:
 - **C++**: Code examples and exercises are written in C++17 (or later).
 - **Git**: For version control and collaboration.
 - **Code Editor**: Recommended editors include Visual Studio Code, CLion, or any IDE of your choice.
-
----
 
 ## Lessons
 
@@ -81,8 +67,6 @@ Each lesson is contained in its own directory and includes a README file with in
 | Lesson 1: Basics                            | 0%                     | Introduction to variables, data types, and basic I/O. |
 | Lesson 2: Classes and Objects               | 75%                    | Learn how to define and use classes and objects in C++. |
 | Lesson 3: Data Protection (Functions & Arrays) | 0%                   | Understand encapsulation, functions, and arrays in classes. |
-
----
 
 ## How to Run Code
 
@@ -98,8 +82,6 @@ Each lesson is contained in its own directory and includes a README file with in
    ```bash
    ./main
    ```
-
----
 
 ## Contributing
 
@@ -119,16 +101,12 @@ Contributions are welcome! If you have any suggestions or improvements, please f
    ```
 5. Create a pull request and describe your changes.
 
----
-
 ## Resources
 
 Here are some resources to supplement your learning:
 - [C++ Official Documentation](https://en.cppreference.com/)
 - [Learn C++](https://www.learncpp.com/)
 - [The C++ Programming Language by Bjarne Stroustrup](https://www.stroustrup.com/C++.html)
-
----
 
 ## Next Steps
 
@@ -137,15 +115,9 @@ Planned additions to the repository include:
 - More exercises and projects to reinforce learning.
 - A dedicated section for debugging tips and tricks.
 
----
-
 ## License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
----
-
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 ![Language](https://img.shields.io/github/languages/top/AnhNguyen-Olivia/Programming-2)
-
----
