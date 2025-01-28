@@ -1,7 +1,3 @@
-Here’s the updated and completed markdown for your README file, incorporating the suggestions:
-
----
-
 # Programming-2
 
 A repository to practice and enhance C++ programming skills.
