@@ -107,6 +107,8 @@ Here are some resources to supplement your learning:
 - [C++ Official Documentation](https://en.cppreference.com/)
 - [Learn C++](https://www.learncpp.com/)
 - [The C++ Programming Language by Bjarne Stroustrup](https://www.stroustrup.com/C++.html)
+- If you're part of the ultra-top-secret, totally-not-obvious club *Ahem, our DLN2 group*, then check the folder for classified (but not really) materials and mysterious info! 🕵️‍♂️🔍  
+
 
 ## Next Steps
 
