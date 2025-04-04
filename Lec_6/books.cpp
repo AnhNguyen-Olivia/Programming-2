@@ -1,61 +1,69 @@
 #include <iostream>
 #include <string>
+using namespace std;
 
 class Book {
 private:
-    std::string author;
-    std::string title;
-    std::string format;
-    double price;
-    int yearOfPublication;
-    std::string publisher;
+    string Author;
+    string Title;
+    string Format; // Changed from Genre to Format
+    double Price;
+    int YearOfPublication; // Changed from Date to YearOfPublication
+    string Publisher;
 
 public:
-    // Constructor
-    Book(std::string author, 
-        std::string title, 
-        std::string format, 
-        double price, 
-        int yearOfPublication, 
-        std::string publisher)
-        : author(author), 
-        title(title), 
-        format(format), 
-        price(price), 
-        yearOfPublication(yearOfPublication), 
-        publisher(publisher) {}
-
-    // Getters
-    std::string getAuthor() const { return author; }
-    std::string getTitle() const { return title; }
-    std::string getFormat() const { return format; }
-    double getPrice() const { return price; }
-    int getYearOfPublication() const { return yearOfPublication; }
-    std::string getPublisher() const { return publisher; }
+    // Constructor using initialization list
+    Book(const string& author, const string& title, const string& format, double price, int yearOfPublication, const string& publisher)
+        : Author(author), Title(title), Format(format), Price(price), YearOfPublication(yearOfPublication), Publisher(publisher) {}
 
     // Setters
-    void setAuthor(const std::string& newAuthor) { author = newAuthor; }
-    void setTitle(const std::string& newTitle) { title = newTitle; }
-    void setFormat(const std::string& newFormat) { format = newFormat; }
-    void setPrice(double newPrice) { price = newPrice; }
-    void setYearOfPublication(int newYear) { yearOfPublication = newYear; }
-    void setPublisher(const std::string& newPublisher) { publisher = newPublisher; }
+    void setAuthor(const string& author) { Author = author; }
+    void setTitle(const string& title) { Title = title; }
+    void setFormat(const string& format) { Format = format; }
+    void setPrice(double price) { Price = price; }
+    void setYearOfPublication(int year) { YearOfPublication = year; }
+    void setPublisher(const string& publisher) { Publisher = publisher; }
 
-    // Display book details
-    void displayDetails() const {
-        std::cout << "Author: " << author << "\n"
-                  << "Title: " << title << "\n"
-                  << "Format: " << format << "\n"
-                  << "Price: $" << price << "\n"
-                  << "Year of Publication: " << yearOfPublication << "\n"
-                  << "Publisher: " << publisher << "\n";
+    // Getters
+    string getAuthor() const { return Author; }
+    string getTitle() const { return Title; }
+    string getFormat() const { return Format; }
+    double getPrice() const { return Price; }
+    int getYearOfPublication() const { return YearOfPublication; }
+    string getPublisher() const { return Publisher; }
+
+    // Method to update multiple attributes
+    void updateBookDetails(const string& author, const string& title, const string& format, double price, int yearOfPublication, const string& publisher) {
+        setAuthor(author);
+        setTitle(title);
+        setFormat(format);
+        setPrice(price);
+        setYearOfPublication(yearOfPublication);
+        setPublisher(publisher);
+    }
+
+    // Method to print book details
+    void printBookDetails() const {
+        cout << "Author: " << getAuthor() << endl;
+        cout << "Title: " << getTitle() << endl;
+        cout << "Format: " << getFormat() << endl;
+        cout << "Price: $" << getPrice() << endl;
+        cout << "Year of Publication: " << getYearOfPublication() << endl;
+        cout << "Publisher: " << getPublisher() << endl;
     }
 };
 
 int main() {
-    // Example usage
-    Book book("J.K. Rowling", "Harry Potter", "Hardcover", 29.99, 1997, "Bloomsbury");
-    book.displayDetails();
+    // Create a book object
+    Book book1("Surbhi Kakar", "Java Programming", "Hardcover", 30.0, 2010, "Dream Tech Press");
+    book1.printBookDetails();
+
+    // Update book details
+    book1.updateBookDetails("Le Chat", "Meow Meow", "Paperback", 40.0, 2037, "The Cat");
+
+    // Print updated book details
+    cout << "\nUpdated Book Details:" << endl;
+    book1.printBookDetails();
 
     return 0;
 }
