@@ -2,6 +2,7 @@
 #include <string>
 #include <cstdlib>
 #include <ctime>
+#include <limits>
 using namespace std;
 
 class studentVgu {
@@ -136,6 +137,7 @@ public:
         }
         stressLevel += hours * 2;
         sleepHours = max(0.0, sleepHours - 0.5 * hours);
+        creditsCompleted += hours;  // Added credit accumulation
     }
 
     void takeExam(string course) {
@@ -214,6 +216,11 @@ public:
         }
     }
 
+    //game mechanics!! Yippee
+    void setCurrentSemester(int semester) { currentSemester = semester; }
+    void setCreditsCompleted(int credits) { creditsCompleted = credits; }
+    void setStressLevel(int level) { stressLevel = level; }
+
 private:
     void logActivity(string message) {
         if (activityCount < 100) {
@@ -224,38 +231,131 @@ private:
 
 int main() {
     srand(time(0));
-
     studentVgu student("Jiafei", "10423200", "Computer Science", 2023);
     student.setGPA(1.8);
+    student.setCreditsCompleted(0);
 
-    cout << "\n=== Student Overview ==="
-         << "\nName: " << student.getName()
-         << "\nID: " << student.getStudentID()
-         << "\nMajor: " << student.getMajor()
-         << "\nEnrollment Year: " << student.getEnrollmentYear()
-         << "\nGPA: " << student.getGPA() << "\n"
-         << "Scholarship " << (student.isOnScholarship() ? "granted: " + student.getScholarshipName() : "not granted") << endl;
+    while (true) {
+        cout << "\n=== VGU Student Life ===" << endl;
+        cout << "1. Attend class\n2. Take exam\n3. Recharge meal card\n4. Join club\n"
+             << "5. Attend VGU Fest\n6. Complain about deadlines\n7. Use VGU bus\n"
+             << "8. Face rain\n9. Check status\n10. Show activities\n11. Quit\n";
+        cout << "Choice: ";
 
-    student.checkScholarshipEligibility();
+        int choice;
+        cin >> choice;
+        if (cin.fail()) {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cout << "Invalid input. Please enter a number.\n";
+            continue;
+        }
+        cin.ignore();
 
-    cout << "\n=== Academic Progress ==="
-         << "\nSemester: " << student.getCurrentSemester()
-         << "\nCredits: " << student.getCreditsCompleted() << "\n";
+        if (choice == 11) break;
 
-    // Campus activities
-    student.rechargeMealCard(500);
-    student.joinClub("Pink Pony Club");
-    student.attendClass("OOP Lab", 3);
-    student.rain(false);
-    student.takeExam("Data Structures");
-    student.vguFestEvent();
-    student.complainAboutDeadline();
-    student.useVGUBus("VGU", "Binh Duong");
-    student.rain(true);
+        switch (choice) {
+            case 1: {
+                string course;
+                int hours;
+                cout << "Course name: ";
+                getline(cin, course);
+                cout << "Hours: ";
+                cin >> hours;
+                cin.ignore();
+                student.attendClass(course, hours);
+                break;
+            }
+            
+            case 2: {
+                string course;
+                cout << "Exam course: ";
+                getline(cin, course);
+                student.takeExam(course);
+                break;
+            }
 
-    // Display status and activities
-    student.displayStatus();
-    student.displayRecentActivities();
+            case 3: {
+                double amount;
+                cout << "Recharge amount: ";
+                cin >> amount;
+                cin.ignore();
+                student.rechargeMealCard(amount);
+                break;
+            }
+
+            case 4: {
+                string club;
+                cout << "Club name: ";
+                getline(cin, club);
+                student.joinClub(club);
+                break;
+            }
+
+            case 5:
+                student.vguFestEvent();
+                break;
+
+            case 6:
+                student.complainAboutDeadline();
+                break;
+
+            case 7: {
+                string from, to;
+                cout << "From: ";
+                getline(cin, from);
+                cout << "To: ";
+                getline(cin, to);
+                student.useVGUBus(from, to);
+                break;
+            }
+
+            case 8: {
+                char hasUmbrella;
+                cout << "Do you have an umbrella? (y/n): ";
+                cin >> hasUmbrella;
+                cin.ignore();
+                student.rain(hasUmbrella == 'y' || hasUmbrella == 'Y');
+                break;
+            }
+
+            case 9:
+                student.displayStatus();
+                break;
+
+            case 10:
+                student.displayRecentActivities();
+                break;
+
+            case 11: 
+                cout << "Exiting...\n";
+                return 0;
+
+            default: cout << "Invalid choice!\n";
+        }
+
+        // Semester advancement check
+        int reqCredits = 30 * student.getCurrentSemester();
+        if (student.getCreditsCompleted() >= reqCredits) {
+            student.setCurrentSemester(student.getCurrentSemester() + 1);
+            cout << "\nAdvanced to Semester " << student.getCurrentSemester() << "!\n";
+            student.setStressLevel(min(100, student.getStressLevel() + 10));
+        }
+
+        // End conditions
+        if (student.getStressLevel() >= 100) {
+            cout << "STRESS OVERLOAD! GAME OVER!\n";
+            break;
+        }
+        if (student.getGPA() >= 2.0) {
+            cout << "LOST SCHOLARSHIP! GAME OVER!\n";
+            break;
+        }
+        if (student.getCurrentSemester() > 8) {
+            cout << "CONGRATULATIONS! YOU GRADUATED!\n";
+            break;
+        }
+    }
 
     return 0;
 }
