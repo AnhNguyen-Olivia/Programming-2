@@ -6,9 +6,9 @@ class Book {
 private:
     string Author;
     string Title;
-    string Format; // Changed from Genre to Format
+    string Format;
     double Price;
-    int YearOfPublication; // Changed from Date to YearOfPublication
+    int YearOfPublication;
     string Publisher;
 
 public:
