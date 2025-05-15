@@ -1,9 +1,10 @@
-// Vector.h
 #ifndef VECTOR_H
 #define VECTOR_H
 
 #include <cassert>
 #include <iostream>
+
+class Matrix; // ✅ Forward declaration only — don't include Matrix.h
 
 class Vector {
 private:
@@ -11,36 +12,27 @@ private:
     double* mData;
 
 public:
-    // Constructor
     Vector(int size);
-
-    // Copy constructor
+    Vector(int size, double initialValue);
     Vector(const Vector& other);
-
-    // Destructor
     ~Vector();
 
-    // Assignment operator
     Vector& operator=(const Vector& other);
 
-    // Overload [] (0-based indexing)
-    double& operator[](int index);             // Non-const version
-    const double& operator[](int index) const; // Const version
+    double& operator[](int index);
+    const double& operator[](int index) const;
 
-    // Overload () (1-based indexing)
-    double& operator()(int index);             // Non-const version
+    double& operator()(int index);             
+    const double& operator()(int index) const;
 
-    // Vector operations
     Vector operator+(const Vector& other) const;
     Vector operator-(const Vector& other) const;
     Vector operator*(double scalar) const;
 
-    // Getter for size
     int Size() const;
-    
-
-    // Print
     void Print() const;
+
+    Matrix ToMatrix() const; // ✅ Still valid with forward declaration
 };
 
 #endif

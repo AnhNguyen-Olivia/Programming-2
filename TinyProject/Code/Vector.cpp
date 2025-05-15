@@ -1,5 +1,6 @@
 // Vector.cpp
 #include "Vector.h"
+#include "Matrix.h"
 #include <iostream>
 #include <cassert>
 
@@ -20,6 +21,14 @@ Vector::Vector(const Vector& other) {
     for (int i = 0; i < mSize; ++i) {
         mData[i] = other.mData[i];
     }
+}
+
+Matrix Vector::ToMatrix() const {
+    Matrix mat(mSize, 1);
+    for (int i = 1; i <= mSize; ++i) {
+        mat(i, 1) = (*this)(i);
+    }
+    return mat;
 }
 
 // Destructor
@@ -47,8 +56,20 @@ double& Vector::operator[](int index) {
     return mData[index];
 }
 
+// Const version of [] operator (0-based)
+const double& Vector::operator[](int index) const {
+    assert(index >= 0 && index < mSize);
+    return mData[index];
+}   
+
 // () operator (1-based)
 double& Vector::operator()(int index) {
+    assert(index >= 1 && index <= mSize);
+    return mData[index - 1];
+}
+
+// Const version (1-based)
+const double& Vector::operator()(int index) const {
     assert(index >= 1 && index <= mSize);
     return mData[index - 1];
 }
