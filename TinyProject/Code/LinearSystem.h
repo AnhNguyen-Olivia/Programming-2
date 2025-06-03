@@ -1,6 +1,6 @@
 #ifndef LINEARSYSTEM_HPP
 #define LINEARSYSTEM_HPP
-
+    
 #include "Matrix.h"
 #include "Vector.h"
 

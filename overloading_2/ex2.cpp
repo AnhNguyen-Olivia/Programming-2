@@ -37,7 +37,7 @@ int main() {
     ComplexNumber list[100];
     int n = 0;
 
-    std::ifstream infile("input.txt");
+    std::ifstream infile("E://Programming-2//overloading_2//input.txt");
     if (!infile) {
         std::cout << "Could not open input.txt file.\n";
         return 1;
@@ -67,5 +67,21 @@ int main() {
         list[i].display();
     }
 
+    //Test operator >
+    ComplexNumber c1(3, 4);
+    ComplexNumber c2(1, 2);
+    if (c1 > c2) {
+        std::cout << "c1 is greater than c2\n";
+    } else {
+        std::cout << "c1 is not greater than c2\n";
+    }
+
+    //Test operator =
+    ComplexNumber c3;
+    c3 = c1;
+    std::cout << "c3 after assignment from c1: ";
+    c3.display();
+    std::cout << "c1 after assignment: ";
+    c1.display();
     return 0;
 }
