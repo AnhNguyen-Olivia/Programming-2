@@ -56,7 +56,7 @@ int main() {
     // Open the input file containing complex numbers
     ifstream fin("E:/Programming-2/PracticeFinal/complex.txt");
     if (!fin) { // Check if file opened successfully
-        std::cout << "Cannot open input file.\n";
+        cout << "Cannot open input file.\n";
         return 1; // Exit if file cannot be opened
     }
 
