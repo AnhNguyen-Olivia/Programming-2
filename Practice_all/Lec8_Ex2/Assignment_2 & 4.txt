@@ -1,0 +1,23 @@
+2.
+    a.
+             C
+            / \
+           C1  C3
+          /
+         C2
+
+    b. 
+        obj1.x is not allowed in main, because x is a protected field of C
+        obj1.f() is allowed in main, since f() is a public inherited
+        obj1.x1 is not allowed in main, because x is a protected field of C
+        obj1.x2 is not allowed in main because x2 is not in C1
+
+    c.
+        obj->x is not allowed, because x is is a protected field of C
+        obj2->x is allowed, because C2 is inherited from C1
+        obj3->x is not allowed, because C3 is inherited from C not C1.
+
+4.
+    Class D inherits from both C1 and C2
+        - C1 inherits from A1 and A2
+        - C2 inherits from B1 and B2
